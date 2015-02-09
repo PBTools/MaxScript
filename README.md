@@ -24,10 +24,10 @@ After installation. Find the **PB_Tools** category in 3dsmax Customize > Customi
 5. **Flow Connect Selected** - Flow Connects only the selected edges.
 6. **Jang Mode** - Sets Ref.Coord.Sys to Screen. A different apporach towards precision modeling.
 7. **Lock Selected UV** - Toggles UV selection Lock. Works only in Unwrap UVW window.
-8. **Lock/Unlock Transforms** - Locks/Unlocks object transform.
-9. **Material Copy-Paste Selected** - Copy/Paste Material selected in material editor across multiple 3dsmax scenes.
+8. **Lock/Unlock Transforms** - Locks or Unlocks object transform.
+9. **Material Copy-Paste Selected** - Copy or Paste Material selected in material editor across multiple 3dsmax scenes.
 10. **MaxBridge** - Shortcut to Editable Poly bridge function.
-11. ** Mesh Copy-Paste Selected** - Copy/Paste geometry across multiple 3dsmax file.
+11. ** Mesh Copy-Paste Selected** - Copy or Paste geometry across multiple 3dsmax file.
 12. **Rotate UV Face 90** - Rotates selected UV face by 90 degrees.
 13. **Select By MatID** - Selects all the faces in the object with the selected face's material ID.
 14. **SmartSnap** - Toggles between snap modes.
