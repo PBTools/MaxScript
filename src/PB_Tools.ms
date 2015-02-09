@@ -27,7 +27,7 @@
 
 -- Dec 12 2008
 -- Added : Channel Info cleaner (PB_cleanChannels)
-							-- Toggle Wire Per Object
+-- Toggle Wire Per Object
 
 macroScript Toggle_Wire	
 	category:"PB_Tools"
@@ -50,7 +50,7 @@ macroScript Toggle_Wire
 )
 
 
-							--Work Like Jang Sir for a bit :)
+--Work Like Jang Sir for a bit :)
 
 macroScript Jang_Mode	
 	category:"PB_Tools"
@@ -63,8 +63,7 @@ macroScript Jang_Mode
 	max showaxisicon
 )
 
-
-							-- Toggle Shade Mode
+-- Toggle Shade Mode
 
 macroScript Shade_Toggle
 	category:"PB_Tools"
@@ -79,7 +78,7 @@ macroScript Shade_Toggle
 	else displayColor.shaded = #material
 )
 
-							-- Toggle between all the snap modes (2D/2.5D/3D)
+-- Toggle between all the snap modes (2D/2.5D/3D)
 
 macroScript Smart_Snap
 	category:"PB_Tools"
@@ -100,13 +99,11 @@ macroScript Smart_Snap
 )
 
 
-							-- Toggle Lock/Unlock Transforms of Multiple objects (credit : Grants)
+-- Toggle Lock/Unlock Transforms of Multiple objects (credit : Grants)
 
 macroScript Lock_Transforms
 	category:"PB_Tools"
 	toolTip:"Lock/Unlock Transforms"
-
-
 (
 	for i in 1 to $selection.count do (try(setTransformLockFlags $selection[i] #{1,2,3,4,5,6,7,8,9})catch())
 )
@@ -117,7 +114,6 @@ macroScript PB_clearChannels
 	category:"PB_Tools"
 	toolTip:"Clear Map Channels above 1"
 (
-	
 	i = 65
 	while i > 2 do
 	(
@@ -133,26 +129,23 @@ macroScript PB_clearChannels
 
 -- MAX FUNCTIONS 
 
-		--Bridge
+--Bridge
 			
-			macroScript PB_MaxBridge
-			category:"PB_Tools"
-			toolTip:"MaxBridge"
-		(	
-			if selection[1] != undefined and classof selection[1] == Editable_Poly then
-			(
-				$.EditablePoly.Bridge ()
-			)
-			
-		)
+macroScript PB_MaxBridge
+category:"PB_Tools"
+toolTip:"MaxBridge"
+(	
+	if selection[1] != undefined and classof selection[1] == Editable_Poly then
+	(
+		$.EditablePoly.Bridge ()
+	)
+
+)
 -- Mar 15 2010
-
-
 macroScript PB_Toggle_UVElement
     category:"PB_Tools"
     toolTip:"Toggle UV Element Mode"
 (
-    
 	theObj = selection[1]
 	
 	if theObj.modifiers[1] != undefined then 
@@ -169,22 +162,22 @@ macroScript PB_Toggle_UVElement
 )
 -- Flow Connect without Auto ring, on selected edges only
 
-			macroScript PB_FlowConnect
-			category:"PB_Tools"
-			toolTip:"Flow Connect Selected"
-		(
-			
-			PolyToolsUI.FlowConnectAutoLoop = false
-			PolyBoost.Flowfunc PolyToolsUI.FlowConnectAutoLoop
-			
-		)
+macroScript PB_FlowConnect
+category:"PB_Tools"
+toolTip:"Flow Connect Selected"
+(
+	
+	PolyToolsUI.FlowConnectAutoLoop = false
+	PolyBoost.Flowfunc PolyToolsUI.FlowConnectAutoLoop
+
+)
 
 
 -- Oct 7 2010
 
 macroScript Pb_Tgl_PresUVs
- category:"PB_Tools"
- toolTip:"Toggle_PreserveUVs"
+category:"PB_Tools"
+toolTip:"Toggle_PreserveUVs"
 (
 	if selection[1] != undefined and classof selection[1] == Editable_Poly then
 	(
@@ -225,33 +218,33 @@ maxOps.CollapseNodeTo obj 1 off
 
 -- Mesh Copy/Paste
 macroScript PB_MeshCopy
-	category:"PB_Tools"
-	toolTip:"Mesh Copy Selected"
-	(
-		if $ != undefined then
-			(
-				theObjs = $
-				if (doesfileexist (getdir #scripts+"\\temp\\")) != true then
-					(
-						makeDir (getdir #scripts+"\\temp\\tempfile.max")
-						savenodes theObjs (getdir #scripts+"\\temp\\tempfile.max")
-					)
-					else
-					(
-						
-						savenodes theObjs (getdir #scripts+"\\temp\\tempfile.max")
-					)
-				
-				print "Copied!"
-			)
-			else
-			(
-				messagebox "Nothing selected."
-			)
+category:"PB_Tools"
+toolTip:"Mesh Copy Selected"
+(
+	if $ != undefined then
+		(
+			theObjs = $
+			if (doesfileexist (getdir #scripts+"\\temp\\")) != true then
+				(
+					makeDir (getdir #scripts+"\\temp\\tempfile.max")
+					savenodes theObjs (getdir #scripts+"\\temp\\tempfile.max")
+				)
+				else
+				(
+					
+					savenodes theObjs (getdir #scripts+"\\temp\\tempfile.max")
+				)
 			
+			print "Copied!"
+		)
+		else
+		(
+			messagebox "Nothing selected."
+		)
 		
-		
-	)
+	
+	
+)
 	
 macroScript PB_MeshPaste
 	category:"PB_Tools"
@@ -268,132 +261,131 @@ macroScript PB_MeshPaste
 			)
 	)
 	
-	-- Material Copy/ Paste selected
-	macroScript PB_MaterialCopy
-	category:"PB_Tools"
-	toolTip:"Material Copy Selected"
-	(
-			thecopypastedir = getdir #autoback
-			thecopypastefile = "\\pastematfile.mat"
-			thecopypastestring = thecopypastedir + thecopypastefile
-
-			selectedmat=medit.GetCurMtl()
-			pastelib=loadTempMaterialLibrary thecopypastestring   
-			if pastelib == undefined then (
-				loadDefaultMatLib           
-				saveTempMaterialLibrary currentMaterialLibrary thecopypastestring
-				pastelib=loadTempMaterialLibrary thecopypastestring
-			)
-		   
-			for i=1 to pastelib.count do
-			(
-				deleteitem pastelib (i)
-			)
-			--currentMaterialLibrary
-			append pastelib selectedmat
-			saveTempMaterialLibrary pastelib thecopypastestring
-	)
-	
-	macroScript PB_MaterialPaste
-	category:"PB_Tools"
-	toolTip:"Material Paste Selected"
-	(
+-- Material Copy/ Paste selected
+macroScript PB_MaterialCopy
+category:"PB_Tools"
+toolTip:"Material Copy Selected"
+(
 		thecopypastedir = getdir #autoback
 		thecopypastefile = "\\pastematfile.mat"
 		thecopypastestring = thecopypastedir + thecopypastefile
-	   
-		pastelib=loadTempMaterialLibrary thecopypastestring
-		selectedmatslot= activeMeditSlot
-		pastedmat=pastelib[1]
-		setMeditMaterial selectedmatslot pastedmat
-	)
 
-	-- Shortcut for collapsing to in the modifier stack, keeping instance alive
-	--smita
-		
-	macroScript PB_CollapseTo
-	category:"PB_Tools"
-	toolTip:"Collapse to Node"
-	(
-		theObj = getCurrentSelection()
-		if theObj.count ==1 then
-		(
-			maxOps.CollapseNodeTo theObj[1] 1 off
+		selectedmat=medit.GetCurMtl()
+		pastelib=loadTempMaterialLibrary thecopypastestring   
+		if pastelib == undefined then (
+			loadDefaultMatLib           
+			saveTempMaterialLibrary currentMaterialLibrary thecopypastestring
+			pastelib=loadTempMaterialLibrary thecopypastestring
 		)
-	)
+	   
+		for i=1 to pastelib.count do
+		(
+			deleteitem pastelib (i)
+		)
+		--currentMaterialLibrary
+		append pastelib selectedmat
+		saveTempMaterialLibrary pastelib thecopypastestring
+)
+
+macroScript PB_MaterialPaste
+category:"PB_Tools"
+toolTip:"Material Paste Selected"
+(
+	thecopypastedir = getdir #autoback
+	thecopypastefile = "\\pastematfile.mat"
+	thecopypastestring = thecopypastedir + thecopypastefile
+   
+	pastelib=loadTempMaterialLibrary thecopypastestring
+	selectedmatslot= activeMeditSlot
+	pastedmat=pastelib[1]
+	setMeditMaterial selectedmatslot pastedmat
+)
+
+-- Shortcut for collapsing to in the modifier stack, keeping instance alive
+--smita
 	
-		macroScript PB_SelByMatID
-	category:"PB_Tools"
-	toolTip:"Select by MatID"
+macroScript PB_CollapseTo
+category:"PB_Tools"
+toolTip:"Collapse to Node"
+(
+	theObj = getCurrentSelection()
+	if theObj.count ==1 then
 	(
-		
-		-- Dec 12,2012
-		-- select only one face
-		-- selects all the faces in the object with the selected faces matID
-		-- Limit: Works only on Editable poly object.Please select only one face
+		maxOps.CollapseNodeTo theObj[1] 1 off
+	)
+)
+
+macroScript PB_SelByMatID
+category:"PB_Tools"
+toolTip:"Select by MatID"
+(
+	
+	-- Dec 12,2012
+	-- select only one face
+	-- selects all the faces in the object with the selected faces matID
+	-- Limit: Works only on Editable poly object.Please select only one face
 
 
-		theFace = ($.getselection #face) as array
+	theFace = ($.getselection #face) as array
 
-		theMatID = polyop.getFaceMatID  $ theFace[1]
+	theMatID = polyop.getFaceMatID  $ theFace[1]
 
-		$.EditablePoly.selectByMaterial theMatID
+	$.EditablePoly.selectByMaterial theMatID
 
 
-				if $ != undefined then
+			if $ != undefined then
+			(
+				theObj = selection[1]
+				if (classof theObj) != Editable_Poly then 
 				(
-					theObj = selection[1]
-					if (classof theObj) != Editable_Poly then 
-					(
-						messagebox "Please select an Editable Poly object."
-					)
-					else
-					(
-						theFace = (theObj.getselection #face) as array
-						theMatID = polyop.getFaceMatID  theObj theFace[1]
-
-						theObj.EditablePoly.selectByMaterial theMatID	
-
-					)
-			
+					messagebox "Please select an Editable Poly object."
 				)
 				else
 				(
-					messagebox "Please select an object."
+					theFace = (theObj.getselection #face) as array
+					theMatID = polyop.getFaceMatID  theObj theFace[1]
+
+					theObj.EditablePoly.selectByMaterial theMatID	
+
 				)
-	)
-
-			
-	macroScript PB_BGColorRandom
-	category:"PB_Tools"
-	toolTip:"BGColor_Random"
-	ButtonText:"BGColor_Random"
-	(
-		viewport.EnableSolidBackgroundColorMode true
-
-		completeredraw()
 		
-		v1 = random 0.5 1.0
-		v2 = random 0.5 1.0
-		v3 = random 0.5 1.0
+			)
+			else
+			(
+				messagebox "Please select an object."
+			)
+)
 
+		
+macroScript PB_BGColorRandom
+category:"PB_Tools"
+toolTip:"BGColor_Random"
+ButtonText:"BGColor_Random"
+(
+	viewport.EnableSolidBackgroundColorMode true
 
-		SetUIColor 41 [v1,v2,v3]
-		colorMan.repaintUI #repaintAll 
-
-	)
-				
-	macroScript PB_BGColorDefault
-	category:"PB_Tools"
-	toolTip:"BGColor_Default"
-	ButtonText:"BGColor_Default"
-	(
-		viewport.EnableSolidBackgroundColorMode true
-
-		completeredraw()
-		defaultColor = [0.5,0.5,0.5]
-		SetUIColor 41 defaultColor
-		colorMan.repaintUI #repaintAll 
-
-	)
+	completeredraw()
 	
+	v1 = random 0.5 1.0
+	v2 = random 0.5 1.0
+	v3 = random 0.5 1.0
+
+
+	SetUIColor 41 [v1,v2,v3]
+	colorMan.repaintUI #repaintAll 
+
+)
+			
+macroScript PB_BGColorDefault
+category:"PB_Tools"
+toolTip:"BGColor_Default"
+ButtonText:"BGColor_Default"
+(
+	viewport.EnableSolidBackgroundColorMode true
+
+	completeredraw()
+	defaultColor = [0.5,0.5,0.5]
+	SetUIColor 41 defaultColor
+	colorMan.repaintUI #repaintAll 
+
+)
