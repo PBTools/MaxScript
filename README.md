@@ -25,13 +25,13 @@ After installation. Find the **PB_Tools** category in 3dsmax Customize > Customi
 6. **Jang Mode** - Sets Ref.Coord.Sys to Screen. A different apporach towards precision modeling.
 7. **Lock Selected UV** - Toggles UV selection Lock. Works only in Unwrap UVW window.
 8. **Lock/Unlock Transforms** - Locks/Unlocks object transform.
-9. **Material Copy/Paste Selected** - Copy/Paste Material selected in material editor across multiple 3dsmax scenes.
+9. **Material Copy-Paste Selected** - Copy/Paste Material selected in material editor across multiple 3dsmax scenes.
 10. **MaxBridge** - Shortcut to Editable Poly bridge function.
-11. ** Mesh Copy/Paste Selected** - Copy/Paste geometry across multiple 3dsmax file.
+11. ** Mesh Copy-Paste Selected** - Copy/Paste geometry across multiple 3dsmax file.
 12. **Rotate UV Face 90** - Rotates selected UV face by 90 degrees.
 13. **Select By MatID** - Selects all the faces in the object with the selected face's material ID.
 14. **SmartSnap** - Toggles between snap modes.
-15. **Toggle Shaded/Material Mode** - Toggle material preview on all objects.
+15. **Toggle Shaded-Material Mode** - Toggle material preview on all objects.
 16. **Toggle UV Element** - Toggle UV Element mode in Unwrap UVW.
 17. **Toggle Wire Per Object** - Toggles wireframe on selected object.
 18. **Toggle PreserveUVs** - Toggle Preserve UVs in Editable Poly Context.
