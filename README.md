@@ -1,0 +1,2 @@
+# MaxScript
+Maxscripts for Artists
